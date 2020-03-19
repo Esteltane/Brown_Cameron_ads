@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "method_sig.h"
+#include "util.h"
 #include <stdlib.h>
 #include <string.h>
 
@@ -27,6 +27,7 @@ void menu(){
   printf("%s \n","| 2. Player vs CPU(WIP) |");
   printf("%s \n","| 3. Credits            |");
   printf("%s \n","| 4. Exit               |");
+  printf("%s \n","| 5. How to Play        |");
   printf("%s \n","-------------------------");
 
   while(boolval == 0) {
@@ -41,14 +42,32 @@ void menu(){
           boolval = 0;
       } else if (menNum == 3) {
           credits();
+          menu();
           boolval = 1;
       } else if (menNum == 4) {
           printf("%s \n", "Thank you for playing please close the terminal window");
           boolval = 1;
-      } else{
+      }else if(menNum == 5){
+          HowTo();
+          menu();
+          boolval = 1;
+      }
+      else{
           boolval = 0;
       }
   }
+}
+
+void HowTo(){
+    printf("-------------------------------------------------------------------------------------------------------- \n");
+    printf("This is the How to guide for connect 4 \n");
+    printf("To start off with you'll need to pick the first option player vs player \n");
+    printf("then you will need to pick the required board size and youll be prompted is this the correct board \n");
+    printf("then you will be asked who is player 1 and player 2 \n");
+    printf("then you will be asked to pick a column to drop your counter (player 1 = 1, Player 2 = 2) \n");
+    printf("the game will play as normal each player takes a turn until one player has connected 4 in a row \n");
+    printf("once a player has 4 in a row the game will end and you will be presented the main menu again \n");
+    printf("-------------------------------------------------------------------------------------------------------- \n");
 }
 
 
@@ -126,35 +145,13 @@ void credits(){
     printf("the following people and website have helped in the creation of the game \n");
     printf("1 - Stack Overflow \n");
     printf("   -- for reminding me on how to write if statements in C \n");
-    printf("   -- and for help on how to create the board as for some reason i couldnt get a board size to work \n");
+    printf("   -- and for help on how to create the board as for some reason i couldn't get a board size to work \n");
     printf("2 - Stewart Anderson \n");
-    printf("   -- for trying to prove me wrong ;)");
+    printf("   -- for trying to prove me wrong with my array :) \n");
 
     //add people and websites here like a sap
 }
 
-void boardMed(){
-    int a[8][9];
-    int i,j,k;
-    for(i=0;i<9;i++)
-        printf("+---");
-
-
-    printf("+\n");
-    memset(a,0,sizeof(a));
-    for(i=0;i<8;i++)
-    {
-        for(j=0;j<9;j++)
-        {
-            printf("| %d ",a[i][j]);
-        }
-        printf("|\n");
-        for(k=0;k<9;k++)
-            printf("+---");
-
-        printf("+\n");
-    }
-}
 void boardLarge(){
     int a[10][11];
     int i,j,k;
